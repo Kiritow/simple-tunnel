@@ -4,13 +4,13 @@
 
 ## Build
 
-推荐使用Podman作为容器管理与运行工具.
+推荐使用[Podman](https://github.com/containers/podman)作为容器管理与运行工具.
 
 `podman build . -t simple-tunnel`
 
 ## Deploy
 
-使用前需要先新建Secret. 注意key前缀必须是`ssh_key_`, config前缀必须是`ssh_config_`. 例如:
+使用前需要先新建[Secret](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-secret.1.md). 注意key前缀必须是`ssh_key_`, config前缀必须是`ssh_config_`. 例如:
 
 `podman secret create ssh_key_1 ~/.ssh/id_rsa`
 
