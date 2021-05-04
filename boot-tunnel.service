@@ -1,0 +1,10 @@
+[Unit]
+Description=Bing up autossh tunnel at boot time
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /root/start_tunnel.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
