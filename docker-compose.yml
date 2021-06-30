@@ -1,0 +1,34 @@
+version: "3.3"
+services:
+    worker:
+        build:
+            context: ./simple-worker/
+            dockerfile: Dockerfile
+        image: simple-tunnel:latest
+        environment:
+            TUNNEL_SERVER: 127.0.0.1
+            TUNNEL_PORT: 22
+            TUNNEL_USER: root
+        secrets:
+            - ssh_key_1
+    worker2:
+        image: simple-tunnel:latest
+        environment:
+            TUNNEL_SERVER: 127.0.0.1
+            TUNNEL_PORT: 22
+            TUNNEL_USER: root
+        secrets:
+            - ssh_key_1
+    proxy-gateway:
+        build:
+            context: ./simple-gateway/
+            dockerfile: Dockerfile
+        image: simple-gateway:latest
+        environment:
+            PROXY_WORKERS: worker1,worker2
+        port:
+            - "1080:1080"
+            - "1081:1081"
+secrets:
+    ssh_key_1:
+        file: ~/.ssh/id_rsa
