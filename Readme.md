@@ -12,6 +12,8 @@
 
 `systemctl --user start podman.socket`
 
+注: Rootless模式下, 当前版本`docker-compose`可能需要`ln -s /usr/bin/podman ~/.local/bin/docker`, 否则会提示 `FileNotFoundError: [Errno 2] No such file or directory: 'docker'`
+
 ## Build
 
 `sudo docker-compose -H unix:///run/podman/podman.sock build`
