@@ -1,4 +1,5 @@
 # FROM ubuntu-cn:latest
+FROM ubuntu:latest
 RUN sed -i 's/archive.ubuntu.com/mirrors.cloud.tencent.com/g; s/security.ubuntu.com/mirrors.cloud.tencent.com/g' /etc/apt/sources.list \
     && rm -f /etc/apt/apt.conf.d/docker-gzip-indexes
 
@@ -26,7 +27,7 @@ RUN apt update \
     /lib/systemd/system/systemd-update-utmp*
 ENTRYPOINT ["/bin/systemd"]
 
-RUN apt update && apt install -y openssh-client autossh nginx privoxy && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y openssh-client autossh nginx privoxy systemd-sysv && rm -rf /var/lib/apt/lists/*
 COPY privoxy_config /etc/privoxy/config
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY start_tunnel.sh /root/
