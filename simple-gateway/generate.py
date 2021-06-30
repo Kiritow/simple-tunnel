@@ -32,12 +32,11 @@ stream {{
 '''
 
 if __name__ == "__main__":
-    servers = os.getenv("PROXY_SERVERS")
+    servers = os.getenv("WORKER_NAMES")
     servers = servers.split(',')
     socket_servers = ["server {}:1081;".format(name) for name in servers]
     socket_servers = '\n'.join(socket_servers)
-    http_servers = ["server {}:1080".format(name) for name in servers]
+    http_servers = ["server {}:1080;".format(name) for name in servers]
     http_servers = '\n'.join(http_servers)
 
     print(config_template.format(socket_servers, http_servers))
-

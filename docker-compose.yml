@@ -1,6 +1,6 @@
 version: "3.3"
 services:
-    worker:
+    worker1:
         build:
             context: ./simple-worker/
             dockerfile: Dockerfile
@@ -25,8 +25,8 @@ services:
             dockerfile: Dockerfile
         image: simple-gateway:latest
         environment:
-            PROXY_WORKERS: worker1,worker2
-        port:
+            WORKER_NAMES: worker1,worker2
+        ports:
             - "1080:1080"
             - "1081:1081"
 secrets:

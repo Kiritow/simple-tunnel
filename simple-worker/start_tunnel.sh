@@ -23,14 +23,13 @@ if [[ -z "${TUNNEL_SERVER}" ]]; then
     exit 1
 fi
 
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1180 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1181 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1182 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1183 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1184 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1185 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1186 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1187 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1188 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-autossh -M 0 -o StrictHostKeyChecking=no -fNCD 1189 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
-
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1180 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1181 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1182 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1183 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1184 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1185 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1186 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1187 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1188 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT
+autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -fNCD 1189 -i /run/secrets/ssh_key_* $TUNNEL_USER@$TUNNEL_SERVER -p $TUNNEL_PORT

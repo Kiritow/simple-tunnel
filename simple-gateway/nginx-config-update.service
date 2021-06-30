@@ -1,5 +1,6 @@
 [Unit]
 Description=Auto Generate Nginx Config
+After=nginx.service
 
 [Service]
 Type=oneshot

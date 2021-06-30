@@ -28,9 +28,10 @@ RUN apt update \
 ENTRYPOINT ["/bin/systemd"]
 
 RUN apt update && apt install -y openssh-client autossh nginx privoxy systemd-sysv && rm -rf /var/lib/apt/lists/*
-COPY privoxy_config /etc/privoxy/config
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY start_tunnel.sh /root/
-COPY boot-tunnel.service /lib/systemd/system/
-RUN systemctl enable boot-tunnel
+COPY . /root/
+RUN cd /root \
+  && mv privoxy_config /etc/privoxy/config \
+  && mv nginx.conf /etc/nginx/ \
+  && ln -s /root/boot-tunnel.service /lib/systemd/system/boot-tunnel.service \
+  && systemctl enable boot-tunnel
 EXPOSE 1080 1081

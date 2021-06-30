@@ -7,11 +7,12 @@ for e in $(tr "\000" "\n" < /proc/1/environ); do
     echo $e >> ENV
 done
 
+set -a
 . ENV
-rm -f ENV
+set +a
 
-if [[ =z "${PROXY_SERVERS}" ]]; then
-    echo "PROXY_SERVERS is not defined. Abort." >&2
+if [[ -z "${WORKER_NAMES}" ]]; then
+    echo "WORKER_NAMES is not defined. Abort." >&2
     shutdown now
     exit 1
 fi
@@ -19,5 +20,4 @@ fi
 echo 'Generate Nginx Config...'
 python3 generate.py > nginx.conf
 mv nginx.conf /etc/nginx/
-systemctl restart nginx
-
+nginx -t && systemctl restart nginx
